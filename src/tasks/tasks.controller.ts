@@ -24,7 +24,7 @@ export class TasksController {
   @Post()
   create(
     @Body() createTaskDto: CreateTaskDto,
-    @GetUser('userId') userId: string,
+    @GetUser('userId') userId: string, // getUserId from the jwt strategy
   ) {
     return this.tasksService.create(createTaskDto, userId);
   }
@@ -57,13 +57,5 @@ export class TasksController {
     @GetUser('userId') userId: string,
   ) {
     return this.tasksService.remove(id, userId);
-  }
-
-  @Patch(':id/done')
-  markAsDone(
-    @Param('id', ParseMongoIdPipe) id: string,
-    @GetUser('userId') userId: string,
-  ) {
-    return this.tasksService.markAsDone(id, userId);
   }
 }

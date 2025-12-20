@@ -1,4 +1,10 @@
-import { IsString, MinLength } from 'class-validator';
+import { IsEnum, IsString, MinLength } from 'class-validator';
+
+export enum TaskStatus {
+  PENDING = 'pending',
+  IN_PROGRESS = 'in_progress',
+  DONE = 'done',
+}
 
 export class CreateTaskDto {
   @IsString()
@@ -9,11 +15,6 @@ export class CreateTaskDto {
   @MinLength(3)
   description: string;
 
-  @IsString()
-  @MinLength(3)
-  status: string;
-
-  //@IsString()
-  //@MinLength(3)
-  //userId: string;
+  @IsEnum(TaskStatus, { message: 'Invalid status' })
+  status: TaskStatus;
 }

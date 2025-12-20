@@ -5,10 +5,10 @@ import {
 } from '@nestjs/common';
 import { CreateTaskDto } from './dto/create-task.dto';
 import { UpdateTaskDto } from './dto/update-task.dto';
-import { isValidObjectId, Model } from 'mongoose';
+import { Model } from 'mongoose';
 import { Task } from './entities/task.entity';
 import { InjectModel } from '@nestjs/mongoose';
-import { isValidDate } from 'rxjs/internal/util/isDate';
+
 @Injectable()
 export class TasksService {
   constructor(
@@ -68,30 +68,9 @@ export class TasksService {
       .exec();
 
     if (deletedCount === 0) {
-      throw new BadRequestException(`Task with ID "${id}" not found`);
+      throw new NotFoundException(`Task with ID "${id}" not found`);
     }
 
     return;
-  }
-
-  async markAsDone(id: string, userId: string) {
-    return id;
-    // try {
-    //   const task = await this.taskModel
-    //     .findOneAndUpdate(
-    //       { _id: id, userId },
-    //       { status: 'done', isDone: true },
-    //       { new: true },
-    //     )
-    //     .exec();
-
-    //   if (!task) {
-    //     throw new NotFoundException(`Task with ID "${id}" not found`);
-    //   }
-
-    //   return task;
-    // } catch (error) {
-    //   throw error;
-    // }
   }
 }

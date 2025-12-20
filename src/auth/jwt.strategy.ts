@@ -7,13 +7,11 @@ import { passportJwtSecret } from 'jwks-rsa';
 export class JwtStrategy extends PassportStrategy(Strategy) {
   constructor() {
     super({
-      // 1. Extraer el token del header "Authorization: Bearer <token>"
-      jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
+      jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(), // 1. Extraer el token del header "Authorization: Bearer <token>"
       ignoreExpiration: false,
-      // 2. Definir el algoritmo de firma (Cognito usa RS256)
-      algorithms: ['RS256'],
-      // 3. Obtener dinámicamente la clave pública desde AWS
+      algorithms: ['RS256'], // 2. Definir el algoritmo de firma (Cognito usa RS256)
       secretOrKeyProvider: passportJwtSecret({
+        // 3. Obtener dinámicamente la clave pública desde AWS
         cache: true,
         rateLimit: true,
         jwksRequestsPerMinute: 5,
