@@ -93,6 +93,7 @@ $ npm run test:cov
 - `src/tasks`: Feature module for Tasks (Controller, Service, DTOs, Schemas).
 - `src/common`: Shared utilities (Pipes, Filters).
 - `test`: End-to-End (E2E) test specifications.
+- `AwsLambda-task-done`: AWS Lambda function code (JavaScript) to mark tasks as "done", including deployment instructions.
 
 ## License
 
