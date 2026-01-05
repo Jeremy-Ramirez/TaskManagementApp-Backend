@@ -1,6 +1,6 @@
-# Insightt Backend API
 
-Backend Technical Test solution for Full Stack Developer position. Built with **NestJS**, **MongoDB**, and **AWS Cognito**.
+
+Built with **NestJS**, **MongoDB**, and **AWS Cognito**.
 
 ## 🚀 Features implemented
 
